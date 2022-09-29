@@ -1,0 +1,116 @@
+* {
+	box-sizing: border-box;
+}
+
+/*
+font-family: 'Aboreto', cursive;
+font-family: 'Nanum Gothic', sans-serif;
+*/
+
+body {
+	width: 100vw;
+	height: 100vh;
+	background: #3d1751;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Nanum Gothic", sans-serif;
+}
+
+.game {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	background: #592155;
+	width: 900px;
+	min-height: 100px;
+	border-radius: 7px;
+	padding: 2em 2em 0 2em;
+}
+
+.title {
+	font-family: "Aboreto", cursive;
+	color: #fafafa;
+	font-size: 30px;
+	padding: 20px 10px 15px 10px;
+	margin: 0;
+}
+
+.separator {
+	width: 290px;
+	height: 3px;
+	background: #ef5c5d;
+}
+
+.image {
+	height: 250px;
+	margin: 40px;
+}
+
+.text {
+	color: #fafafa;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 0 25px 0 35px;
+	text-align: center;
+}
+
+.btnpanel {
+	display: flex;
+	width: 90%;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 25px;
+	flex-wrap: wrap;
+}
+
+button {
+	color: #fafafa;
+	background-color: #592155;
+	font-size: 25px;
+	border: 3px solid #ef5c5d;
+	border-radius: 20px;
+	padding: 15px 40px;
+	margin: 0 15px 30px 15px;
+	transition: background-color 0.3s;
+}
+
+button:hover {
+	background-color: #ef5c5d;
+}
+
+button:active {
+	background-color: #fafafa;
+	color: #ef5c5d;
+}
+
+@keyframes flash {
+	0% {
+		background-color: #592155;
+	}
+	100% {
+		background-color: #ef5c5d;
+	}
+}
+
+button.action {
+	animation: flash 1.5s infinite alternate;
+}
+
+.footer {
+	display: flex;
+	width: 900px;
+	bottom: 0;
+	justify-content: space-between;
+	background-color: #363636;
+	color: #fafafa;
+	font-family: "Nanum Gothic", sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	border-radius: 0 0 7px 7px;
+}
+
+.footer * {
+	padding: 0.5em 2em;
+}
