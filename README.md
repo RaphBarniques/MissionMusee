@@ -11,7 +11,7 @@ Projet de création d'un jeu "Vous êtes le héro" dans le cadre du cours de Dé
 **Palette de couleur :** [Palette sur Coolors.co](https://coolors.co/3d1751-592155-ef5c5d-363636-fafafa)
 
 <details>
-  <summary> Diagramme: </summary> 
+  <summary> Diagramme: ⚠️⚠️⚠️ ALERTE AU DIVULGÂCHEUR ⚠️⚠️⚠️ </summary> 
   
   
 ![Schema](/images/schema.drawio.png)
