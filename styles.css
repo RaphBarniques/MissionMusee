@@ -98,6 +98,32 @@ button.action {
 	animation: flash 1.5s infinite alternate;
 }
 
+button.action::before {
+    background-size: 23px 23px;
+	background-repeat: no-repeat;
+    display: inline-block;
+    width: 23px; 
+    height: 23px;
+    content:"";
+	padding-right: 10px;
+}
+
+button.rope::before {
+	    background-image: url('images/icons/rope.png');
+}
+
+button.lockpick::before {
+	    background-image: url('images/icons/lockpicking.png');
+}
+
+button.bomb::before {
+	    background-image: url('images/icons/bomb.png');
+}
+
+button.spray::before {
+	    background-image: url('images/icons/spray.png');
+}
+
 .footer {
 	display: flex;
 	width: 900px;
