@@ -7,35 +7,23 @@ let chapterObj = {
 	LeCommencement: {
 		subtitle: "Le commencement",
 		text: "Bienvenue dans Mission Musée, Mission, musée, Mission Musée. Votre mission est de dérober 3 items du musée, soit une toile d'une valeur inestimable, une statue ancienne et le plus gros diamant du monde! Mais avant de commencer, vous pouvez choisir un objet pour vous aider. Choisissez bien, votre sort pourrait dépendre de cet objet! Bonne chance!",
-		img: "",
+		img: "images/image.png",
 		options: [
 			{
 				text: "Une corde",
-				goto: "goToChapter('Hall')",
-				action() {
-					console.log("Vous avez pris la corde");
-				},
+				goto: "getRope('Hall')",
 			},
 			{
 				text: "Un kit de crochetage",
-				goto: "goToChapter('Hall')",
-				action() {
-					console.log("Vous avez pris la corde");
-				},
+				goto: "getKit('Hall')",
 			},
 			{
 				text: "Des explosifs",
-				goto: "goToChapter('Hall')",
-				action() {
-					console.log("Vous avez pris la corde");
-				},
+				goto: "getBomb('Hall')",
 			},
 			{
 				text: "Un spray à cheveux",
-				goto: "goToChapter('Hall')",
-				action() {
-					console.log("Vous avez pris la corde");
-				},
+				goto: "getSpray('Hall')",
 			},
 		],
 	},
@@ -43,7 +31,7 @@ let chapterObj = {
 	Hall: {
 		subtitle: "Le hall",
 		text: "Vous êtes entré dans le hall. Tout semble calme pour l'instant. Plusieurs passages s'offrent à vous.",
-		img: "",
+		img: "images/image.png",
 		options: [
 			{
 				text: "Partir à gauche",
@@ -83,9 +71,27 @@ function goToChapter(chapter) {
 }
 
 let hasRope = false;
+let hasKit = false;
+let hasBomb = false;
+let hasSpray = false;
 
 function getRope(chapitre){
 	hasRope = true;
+	goToChapter(chapitre);
+}
+
+function getKit(chapitre){
+	hasKit = true;
+	goToChapter(chapitre);
+}
+
+function getBomb(chapitre){
+	hasBomb = true;
+	goToChapter(chapitre);
+}
+
+function getSpray(chapitre){
+	hasSpray = true;
 	goToChapter(chapitre);
 }
 
