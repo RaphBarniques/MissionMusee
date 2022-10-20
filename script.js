@@ -2,6 +2,15 @@ const subtitle = document.querySelector(".title");
 const text = document.querySelector(".text");
 const image = document.querySelector(".image");
 const btnpanel = document.querySelector(".btnpanel");
+const endmenu = document.querySelector(".end");
+const endclose = document.querySelector(".endclose");
+const endopen = document.querySelector(".endopen");
+const artmenu = document.querySelector(".artefact");
+const artclose = document.querySelector(".artclose");
+const artopen = document.querySelector(".artopen");
+const artname = document.querySelector(".artname");
+const endname = document.querySelector(".endname");
+
 
 let chapterObj = {
 	LeCommencement: {
@@ -100,5 +109,34 @@ function checkRope(chapitreOui, chapitreNon){
 		goToChapter(chapitreOui);
 	} else {
 		goToChapter(chapitreNon);
+	}
+}
+
+endopen.addEventListener("click", toggleEnd);
+endclose.addEventListener("click", toggleEnd);
+
+function toggleEnd() {
+	endmenu.classList.toggle("hide")
+}
+artopen.addEventListener("click", toggleArt);
+artclose.addEventListener("click", toggleArt);
+
+function toggleArt() {
+	artmenu.classList.toggle("hide")
+}
+
+function showArtName(element, name){
+	if(element.classList.contains("unlocked")){
+		artname.innerHTML = name;
+	} else {
+		artname.innerHTML = "???";
+	}
+}
+
+function showEndName(element, name){
+	if(element.classList.contains("unlocked")){
+		endname.innerHTML = name;
+	} else {
+		endname.innerHTML = "???";
 	}
 }
