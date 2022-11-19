@@ -56,11 +56,12 @@ let chapterObj = {
 			},
 			{
 				text: "Tenter de désactiver les systèmes d'alarmes",
-				goto: "",
+				goto: "goToChapter('Zap')",
 				gadget: "kit",
 			},
 		],
 	},
+	Zap: {subtitle:'Zap!', text:'Vous avez bien essayé de désactiver les sytèmes dalarmes avec vos outils mais une seconde dinattention a suffit pour que votre crochet court-circuite deux fils et vous électrocute à mort. Ouch…', img:'images/image.png', options:[{text:'Retour au début', goto:'LeCommencement'}]},
 };
 
 
