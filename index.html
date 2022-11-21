@@ -18,10 +18,11 @@
         <p class="text">Bonjour à toi, courageux aventurier des Internets! Voici Mission Musée, Mission Musée, Mission Musée (dites ça à voix haute pour voir!), un jeu qui découle du <a href="https://smnarnold.com/projets/vous-etes-le-heros">projet de création d'un jeu "Vous êtes le héro".</a> Vous m'en donnerez des nouvelles!</p>
         <div class="btnpanel">
             <button onclick="goToChapter('LeCommencement')">Commencer !</button>
+            <button onclick="toggleSettings()">Réglages</button>
         </div>
         <div class="footer">
-            <p class="artopen">1 / 3 artéfacts</p>
-            <p class="endopen">6 / 24 fins débloquées</p>
+            <p class="artopen">0 / 3 artéfacts</p>
+            <p class="endopen">0 / 24 fins débloquées</p>
         </div>
         <div class="menu artefact hide">
             <img class="artclose" src="images/Cross_icon_(white).svg.png" alt="close">
@@ -30,7 +31,7 @@
                     <div class="artmystere">?</div>
                     <img class="iconart" src="images/icons/painting.png" alt="painting">
                 </div>
-                <div class="artelement diamant unlocked" onmouseover="showArtName(this, 'Diamant')">
+                <div class="artelement diamant" onmouseover="showArtName(this, 'Diamant')">
                     <div class="artmystere">?</div>
                     <img class="iconart" src="images/icons/diamond.png" alt="diamond">
                 </div>
@@ -60,24 +61,34 @@
                     <div class="endmystere">?</div>
                     <div class="endnumber">4</div>
                 </div>
-                <div class="endelement end5 unlocked" onmouseover="showEndName(this, 'Franchement...')">
+                <div class="endelement end5" onmouseover="showEndName(this, 'Franchement...')">
                     <div class="endmystere">?</div>
                     <div class="endnumber">5</div>
                 </div>
-                <div class="endelement end6 unlocked" onmouseover="showEndName(this, 'Une brochette de voyou')">
+                <div class="endelement end6" onmouseover="showEndName(this, 'Une brochette de voyou')">
                     <div class="endmystere">?</div>
                     <div class="endnumber">6</div>
                 </div>
-                <div class="endelement end7 unlocked" onmouseover="showEndName(this, 'Le grand retour de la peste')">
+                <div class="endelement end7" onmouseover="showEndName(this, 'Le grand retour de la peste')">
                     <div class="endmystere">?</div>
                     <div class="endnumber">7</div>
                 </div>
-                <div class="endelement end8 unlocked" onmouseover="showEndName(this, 'Qu\'on lui coupe la tête!')">
+                <div class="endelement end8" onmouseover="showEndName(this, 'Qu\'on lui coupe la tête!')">
                     <div class="endmystere">?</div>
                     <div class="endnumber">8</div>
                 </div>
             </div>
             <p class="endname">Fin</p>
+        </div>
+        <div class="menu settings hide">
+            <img class="settingsclose" src="images/Cross_icon_(white).svg.png" alt="close">
+            <div class="settingslist">
+                <div class="soundsettings">
+                    <input type="checkbox" name="Son" id="soundBtn" checked>
+                    <label for="soundBtn" class="soundlabel">Son</label>
+                </div>
+                <button class="resetBtn">Recommencer</button>
+            </div>
         </div>
     </div>
    
