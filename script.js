@@ -533,27 +533,32 @@ window.addEventListener("load", () => {
 	}
 
 	if (localStorage.getItem("hasRope") != null) {
-		hasRope = localStorage.getItem("hasRope");
+		hasRope = JSON.parse(localStorage.getItem("hasRope"));
 		console.log("hasRope loaded : " + hasRope);
 	}
 
 	if (localStorage.getItem("hasLockpick") != null) {
-		hasLockpick = localStorage.getItem("hasLockpick");
+		hasLockpick = JSON.parse(localStorage.getItem("hasLockpick"));
 		console.log("hasLockpick loaded : " + hasLockpick);
 	}
 
 	if (localStorage.getItem("hasBomb") != null) {
-		hasBomb = localStorage.getItem("hasBomb");
+		hasBomb = JSON.parse(localStorage.getItem("hasBomb"));
 		console.log("hasBomb loaded : " + hasBomb);
 	}
 
 	if (localStorage.getItem("hasSpray") != null) {
-		hasSpray = localStorage.getItem("hasSpray");
+		hasSpray = JSON.parse(localStorage.getItem("hasSpray"));
 		console.log("hasSpray loaded : " + hasSpray);
 	}
 
+	if (localStorage.getItem("hasKeycard") != null) {
+		hasKeycard = JSON.parse(localStorage.getItem("hasKeycard"));
+		console.log("hasKeycard loaded : " + hasKeycard);
+	}
+
 	if (localStorage.getItem("allowSound") != null) {
-		allowSound = localStorage.getItem("allowSound");
+		allowSound = JSON.parse(localStorage.getItem("allowSound"));
 		console.log("allowSound loaded : " + allowSound);
 	}
 
@@ -564,7 +569,6 @@ window.addEventListener("load", () => {
 		for (i = 0; i < endList.length; i++) {
 			endItem = document.querySelector(".end" + endList[i]);
 			endItem.classList.add("unlocked");
-			console.log(".end" + endList[i])
 		}
 	}
 
@@ -579,95 +583,99 @@ window.addEventListener("load", () => {
 	}
 });
 
-	//---DISPLAY CHAPTERS---
-	function goToChapter(chapter) {
-		//Save active page
-		activePage = chapter;
-		localStorage.setItem("activePage", chapter);
+//---DISPLAY CHAPTERS---
+function goToChapter(chapter) {
+	//Save active page
+	activePage = chapter;
+	localStorage.setItem("activePage", chapter);
 
-		//Build page
-		subtitle.innerHTML = chapterObj[chapter]["subtitle"];
-		text.innerHTML = chapterObj[chapter]["text"];
-		image.src = chapterObj[chapter]["img"];
-		btnpanel.innerHTML = "";
+	//Build page
+	subtitle.innerHTML = chapterObj[chapter]["subtitle"];
+	text.innerHTML = chapterObj[chapter]["text"];
+	image.src = chapterObj[chapter]["img"];
+	btnpanel.innerHTML = "";
 
-		//Build button panel
-		for (i = 0; i < chapterObj[chapter]["options"].length; i++) {
-			let button = document.createElement("button");
-			let text = document.createTextNode(
-				chapterObj[chapter]["options"][i]["text"]
+	//Build button panel
+	for (i = 0; i < chapterObj[chapter]["options"].length; i++) {
+		let button = document.createElement("button");
+		let text = document.createTextNode(
+			chapterObj[chapter]["options"][i]["text"]
+		);
+		button.appendChild(text);
+		button.setAttribute(
+			"onclick",
+			chapterObj[chapter]["options"][i]["goto"]
+		);
+		//Check for gadgets
+		if (chapterObj[chapter]["options"][i]["gadget"]) {
+			console.log(
+				eval("has" + chapterObj[chapter]["options"][i]["gadget"])
 			);
-			button.appendChild(text);
 			button.setAttribute(
-				"onclick",
-				chapterObj[chapter]["options"][i]["goto"]
+				"class",
+				"action " + chapterObj[chapter]["options"][i]["gadget"]
 			);
-			//Check for gadgets
-			if (chapterObj[chapter]["options"][i]["gadget"]) {
-				button.setAttribute(
-					"class",
-					"action " + chapterObj[chapter]["options"][i]["gadget"]
-				);
-				if (
-					eval("has" + chapterObj[chapter]["options"][i]["gadget"]) ==
-					false
-				) {
-					button.setAttribute("class", "hide");
-				}
+			
+			if ((eval("has" + chapterObj[chapter]["options"][i]["gadget"])) == false) {
+				button.setAttribute("class", "hide");
+				console.log("hide")
+			} else {
+				console.log("show")
 			}
-			btnpanel.appendChild(button);
 		}
+		btnpanel.appendChild(button);
+	}
 
-		//Check for end or win
-		if (chapterObj[chapter]["end"]) {
-			//Add to the list
-			if (!endList.includes(chapterObj[chapter]["end"])) {
-				endList.push(chapterObj[chapter]["end"]);
-				endListStorage = JSON.stringify(endList);
-				localStorage.setItem("endList", endListStorage);
-				endopen.textContent = endList.length + " / 24 fins débloquées";
-				endItem = document.querySelector(".end" + chapterObj[chapter]["end"]);
-				endItem.classList.add("unlocked");
-			}
-			console.log(endList);
-			//Change style
-			document.body.classList.add("end");
-			//Play sound
-			if (allowSound == true) {
-				deathSound.volume = 0.2;
-				deathSound.currentTime = 0;
-				deathSound.play();
-			}
-		} else if (chapterObj[chapter]["art"]) {
-			//Add to list
-			if (!artList.includes(chapterObj[chapter]["art"])) {
-				artList.push(chapterObj[chapter]["art"]);
-				artListStorage = JSON.stringify(artList);
-				localStorage.setItem("artList", artListStorage);
-				artopen.textContent = artList.length + " / 3 artéfacts";
-				artItem = document.querySelector("." + chapterObj[chapter]["art"]);
-				artItem.classList.add("unlocked");
-			}
-			//Change style
-			document.body.classList.add("win");
-			//Play sound
-			if (allowSound == true) {
-				winSound.volume = 0.2;
-				winSound.currentTime = 0;
-				winSound.play();
-			}
-		} else {
-			//Change style
-			document.body.classList.remove("end");
-			document.body.classList.remove("win");
-			//Play sound
-			if (allowSound == true) {
-				transitionSound.volume = 0.3;
-				transitionSound.currentTime = 0;
-				transitionSound.play();
-			}
+	//Check for end or win
+	if (chapterObj[chapter]["end"]) {
+		//Add to the list
+		if (!endList.includes(chapterObj[chapter]["end"])) {
+			endList.push(chapterObj[chapter]["end"]);
+			endListStorage = JSON.stringify(endList);
+			localStorage.setItem("endList", endListStorage);
+			endopen.textContent = endList.length + " / 24 fins débloquées";
+			endItem = document.querySelector(".end" + chapterObj[chapter]["end"]);
+			endItem.classList.add("unlocked");
+		}
+		console.log(endList);
+		//Change style
+		document.body.classList.add("end");
+		//Play sound
+		if (allowSound == true) {
+			deathSound.volume = 0.2;
+			deathSound.currentTime = 0;
+			deathSound.play();
+		}
+	} else if (chapterObj[chapter]["art"]) {
+		//Add to list
+		if (!artList.includes(chapterObj[chapter]["art"])) {
+			artList.push(chapterObj[chapter]["art"]);
+			artListStorage = JSON.stringify(artList);
+			localStorage.setItem("artList", artListStorage);
+			artopen.textContent = artList.length + " / 3 artéfacts";
+			artItem = document.querySelector("." + chapterObj[chapter]["art"]);
+			artItem.classList.add("unlocked");
+		}
+		//Change style
+		document.body.classList.add("win");
+		//Play sound
+		if (allowSound == true) {
+			winSound.volume = 0.2;
+			winSound.currentTime = 0;
+			winSound.play();
+		}
+	} else {
+		//Change style
+		document.body.classList.remove("end");
+		document.body.classList.remove("win");
+		//Play sound
+		if (allowSound == true) {
+			transitionSound.volume = 0.3;
+			transitionSound.currentTime = 0;
+			transitionSound.play();
 		}
 	}
+}
 
 	//Item chapters
 	function getRope(chapitre){
@@ -676,10 +684,12 @@ window.addEventListener("load", () => {
 		hasBomb = false;
 		hasSpray = false;
 		wallExploded = false;
+		hasKeycard = false;
 		localStorage.setItem("hasRope", hasRope);
 		localStorage.setItem("hasLockpick", hasLockpick);
 		localStorage.setItem("hasBomb", hasBomb);
 		localStorage.setItem("hasSpray", hasSpray);
+		localStorage.setItem("hasKeycard", hasKeycard);
 		localStorage.setItem("wallExploded", wallExploded);
 		goToChapter(chapitre);
 	}
@@ -690,10 +700,12 @@ window.addEventListener("load", () => {
 		hasBomb = false;
 		hasSpray = false;
 		wallExploded = false;
+		hasKeycard = false;
 		localStorage.setItem("hasRope", hasRope);
 		localStorage.setItem("hasLockpick", hasLockpick);
 		localStorage.setItem("hasBomb", hasBomb);
 		localStorage.setItem("hasSpray", hasSpray);
+		localStorage.setItem("hasKeycard", hasKeycard);
 		localStorage.setItem("wallExploded", wallExploded);
 		goToChapter(chapitre);
 		
@@ -705,10 +717,12 @@ window.addEventListener("load", () => {
 		hasBomb = true;
 		hasSpray = false;
 		wallExploded = false;
+		hasKeycard = false;
 		localStorage.setItem("hasRope", hasRope);
 		localStorage.setItem("hasLockpick", hasLockpick);
 		localStorage.setItem("hasBomb", hasBomb);
 		localStorage.setItem("hasSpray", hasSpray);
+		localStorage.setItem("hasKeycard", hasKeycard);
 		localStorage.setItem("wallExploded", wallExploded);
 		goToChapter(chapitre);
 	}
@@ -719,10 +733,12 @@ window.addEventListener("load", () => {
 		hasBomb = false;
 		hasSpray = true;
 		wallExploded = false;
+		hasKeycard = false;
 		localStorage.setItem("hasRope", hasRope);
 		localStorage.setItem("hasLockpick", hasLockpick);
 		localStorage.setItem("hasBomb", hasBomb);
 		localStorage.setItem("hasSpray", hasSpray);
+		localStorage.setItem("hasKeycard", hasKeycard);
 		localStorage.setItem("wallExploded", wallExploded);
 		goToChapter(chapitre);
 	}
@@ -740,7 +756,7 @@ window.addEventListener("load", () => {
 	}
 
 	function checkLasers() {
-		wallExploded = localStorage.getItem(wallExploded);
+		wallExploded = JSON.parse(localStorage.getItem(wallExploded));
 		if (wallExploded == true) {
 			goToChapter("RayonsEau");
 		} else {
@@ -750,61 +766,61 @@ window.addEventListener("load", () => {
 
 //---MENUS---
 
-//Opening menus
-endopen.addEventListener("click", toggleEnd);
-endclose.addEventListener("click", toggleEnd);
+	//Opening menus
+	endopen.addEventListener("click", toggleEnd);
+	endclose.addEventListener("click", toggleEnd);
 
-function toggleEnd() {
-	endmenu.classList.toggle("hide")
-	artmenu.classList.add("hide")
-	settingsmenu.classList.add("hide");
-}
-artopen.addEventListener("click", toggleArt);
-artclose.addEventListener("click", toggleArt);
-
-function toggleArt() {
-	artmenu.classList.toggle("hide")
-	endmenu.classList.add("hide");
-	settingsmenu.classList.add("hide");
-}
-
-settingsclose.addEventListener("click", toggleSettings);
-
-function toggleSettings() {
-	settingsmenu.classList.toggle("hide");
-	endmenu.classList.add("hide");
-	artmenu.classList.add("hide");
-}
-
-//Showing achievements names
-function showArtName(element, name){
-	if(element.classList.contains("unlocked")){
-		artname.innerHTML = name;
-	} else {
-		artname.innerHTML = "???";
+	function toggleEnd() {
+		endmenu.classList.toggle("hide")
+		artmenu.classList.add("hide")
+		settingsmenu.classList.add("hide");
 	}
-}
+	artopen.addEventListener("click", toggleArt);
+	artclose.addEventListener("click", toggleArt);
 
-function showEndName(element, name){
-	if(element.classList.contains("unlocked")){
-		endname.innerHTML = name;
-	} else {
-		endname.innerHTML = "???";
+	function toggleArt() {
+		artmenu.classList.toggle("hide")
+		endmenu.classList.add("hide");
+		settingsmenu.classList.add("hide");
 	}
-}
 
-//Settings
-soundBtn.addEventListener("click", toggleSound);
+	settingsclose.addEventListener("click", toggleSettings);
 
-function toggleSound() {
-	allowSound = !allowSound;
-	localStorage.setItem("allowSound", allowSound);
+	function toggleSettings() {
+		settingsmenu.classList.toggle("hide");
+		endmenu.classList.add("hide");
+		artmenu.classList.add("hide");
+	}
 
-}
+	//Showing achievements names
+	function showArtName(element, name){
+		if(element.classList.contains("unlocked")){
+			artname.innerHTML = name;
+		} else {
+			artname.innerHTML = "???";
+		}
+	}
 
-resetBtn.addEventListener("click", reset);
+	function showEndName(element, name){
+		if(element.classList.contains("unlocked")){
+			endname.innerHTML = name;
+		} else {
+			endname.innerHTML = "???";
+		}
+	}
 
-function reset() {
-	localStorage.clear();
-	window.location.reload();
-}
+	//Settings
+	soundBtn.addEventListener("click", toggleSound);
+
+	function toggleSound() {
+		allowSound = !allowSound;
+		localStorage.setItem("allowSound", allowSound);
+
+	}
+
+	resetBtn.addEventListener("click", reset);
+
+	function reset() {
+		localStorage.clear();
+		window.location.reload();
+	}

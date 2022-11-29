@@ -142,7 +142,7 @@ button.Spray::before {
 	    background-image: url('images/icons/spray.png');
 }
 
-button.Card::before {
+button.Keycard::before {
 	    background-image: url('images/icons/card.png');
 }
 
