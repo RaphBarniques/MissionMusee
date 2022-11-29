@@ -565,7 +565,7 @@ window.addEventListener("load", () => {
 	if (localStorage.getItem("endList") != null) {
 		endList = JSON.parse(localStorage.getItem("endList"));
 		console.log("endList loaded : " + endList);
-		endopen.textContent = endList.length + " / 24 fins débloquées";
+		endopen.textContent = endList.length + " / 21 fins débloquées";
 		for (i = 0; i < endList.length; i++) {
 			endItem = document.querySelector(".end" + endList[i]);
 			endItem.classList.add("unlocked");
