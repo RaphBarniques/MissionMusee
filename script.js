@@ -62,7 +62,7 @@ let chapterObj = {
 		subtitle: "Zap!",
 		text: "Vous avez bien essayé de désactiver les systèmes d'alarme avec vos outils, mais une seconde d'inattention a suffi pour que votre crochet court-circuite deux fils et vous électrocute à mort. Ouch…",
 		img: "images/alarme.jpg",
-		options: [{ text: "Retour au début", goto: "LeCommencement" }],
+		options: [{ text: "Retour au début", goto: "goToChapter('LeCommencement')" }],
 		end: "1",
 	},
 
@@ -509,7 +509,7 @@ let chapterObj = {
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
 		],
-		art: "",
+		win: "win",
 	},
 
 	WinEnd: {
@@ -519,7 +519,7 @@ let chapterObj = {
 		options: [
 			{ text: "Découvrir ce qu'il vous manque !", goto: "rickroll()" },
 		],
-		art: "",
+		win: "winend",
 	},
 };
 
@@ -618,10 +618,7 @@ function goToChapter(chapter) {
 			
 			if ((eval("has" + chapterObj[chapter]["options"][i]["gadget"])) == false) {
 				button.setAttribute("class", "hide");
-				console.log("hide")
-			} else {
-				console.log("show")
-			}
+			} 
 		}
 		btnpanel.appendChild(button);
 	}
@@ -646,6 +643,10 @@ function goToChapter(chapter) {
 			deathSound.currentTime = 0;
 			deathSound.play();
 		}
+		//Detect win
+		if(endList.length == 24 && activePage != "WinEnd") {
+			document.querySelector(".btnpanel button").setAttribute("onclick", "goToChapter('WinEnd')");
+		}
 	} else if (chapterObj[chapter]["art"]) {
 		//Add to list
 		if (!artList.includes(chapterObj[chapter]["art"])) {
@@ -663,7 +664,21 @@ function goToChapter(chapter) {
 			winSound.volume = 0.2;
 			winSound.currentTime = 0;
 			winSound.play();
+		} 
+		//Redirect if win
+		if (artList.length == 3) {
+			document.querySelector(".btnpanel button").setAttribute("onclick", "goToChapter('Win')")
 		}
+	} else if (chapterObj[chapter]["win"]) {
+		console.log("win")
+		//Change style
+		document.body.classList.add("win");
+		//Play sound
+		if (allowSound == true) {
+			winSound.volume = 0.2;
+			winSound.currentTime = 0;
+			winSound.play();
+		} 
 	} else {
 		//Change style
 		document.body.classList.remove("end");
@@ -762,6 +777,10 @@ function goToChapter(chapter) {
 		} else {
 			goToChapter("Rayons");
 		}
+	}
+
+	function rickroll() {
+		location.href='https://www.youtube.com/watch?v=xvFZjo5PgG0';
 	}
 
 //---MENUS---
