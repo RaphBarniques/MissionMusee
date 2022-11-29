@@ -142,6 +142,10 @@ button.Spray::before {
 	    background-image: url('images/icons/spray.png');
 }
 
+button.Card::before {
+	    background-image: url('images/icons/card.png');
+}
+
 .footer {
 	display: flex;
 	width: 900px;

@@ -26,6 +26,8 @@ let hasRope = false;
 let hasLockpick = false;
 let hasBomb = false;
 let hasSpray = false;
+let wallExploded = false;
+let hasKeycard = false;
 let allowSound = true;
 let endList = [];
 let artList = [];
@@ -191,7 +193,7 @@ let chapterObj = {
 	RayonsSpray: {
 		subtitle: "Comme dans les films d'espion",
 		text: "Votre instinc d'agent secret vous dicte de vous méfier. Vous sortez donc votre spray et arrosez vos alentours. sous vos yeux, des centaines de rayons laser apparraissent. Vous commencez à vous tortiller entre les rayons et finissez par arriver de l'autre côté sans même accrocher en accrocher un seul.",
-		img: "images/piecelaser.jpg",
+		img: "images/piecelaser.png",
 		options: [
 			{ text: "Emparez-vous du tableau", goto: 'goToChapter("Tableau")' },
 		],
@@ -232,7 +234,7 @@ let chapterObj = {
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
 		],
-		win: "Tableau",
+		art: "peinture",
 	},
 
 	Romains: {
@@ -339,7 +341,7 @@ let chapterObj = {
 		subtitle: "Le local de la Garda",
 		text: "Vous crochetez la serrure et arrivez dans le local de la sécurité. Heureusement, celui-ci est vide. Vous jetez un œil aux caméras de sécurité, mais une carte sur le bureau attire votre attention. Il s'agit d'une carte magnétique de niveau 3. Voilà qui pourrait être utile! vous empochez la carte et montez l'escalier au fond de la pièce.",
 		img: "images/garda.jpg",
-		options: [{ text: "On monte!", goto: 'goToChapter("Dino")' }],
+		options: [{ text: "On monte!", goto: 'getKeycard("Dino")' }],
 	},
 
 	CoffreFort: {
@@ -369,7 +371,7 @@ let chapterObj = {
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
 		],
-		win: "Diamant",
+		art: "diamant",
 	},
 
 	Dino: {
@@ -431,7 +433,7 @@ let chapterObj = {
 			{ text: "Aller voir les poissons clowns", goto: 'goToChapter("Nemo")', },
 			{ text: "Grimper l'échelle et nager vers la perle", goto: 'goToChapter("Pirhana")', },
 			{ text: "Flatter les raies", goto: 'goToChapter("Anguille")' },
-			{ text: "Faire exploser l'aquarium vide", goto: 'goToChapter("Mur")', gadget: "Bomb",},
+			{ text: "Faire exploser l'aquarium vide", goto: 'explodeWall("Mur")', gadget: "Bomb",},
 		],
 	},
 
@@ -466,7 +468,7 @@ let chapterObj = {
 		subtitle: "Trouver Némo",
 		text: "Vous vous approchez de l'aquarium rempli de poissons clowns. L'un d'entre eux s'adresse à vous. Il se prénomme Martin et cherche son fils. Confus, vous lui pointez un groupe de jeunes poissons clowns. Celui-ci verse une larme (?) et vous remercie de tout coeur de l'avoir aidé. Il vous guide jusqu'à la porte au fond de la salle tout en lui souhaitant bonne chance.",
 		img: "images/nemo.jpg",
-		options: [{ text: "Eh bien!", goto: 'checkBureau()' }],
+		options: [{ text: "Eh bien!", goto: 'goToChapter("Bureau")' }],
 	},
 
 	Bureau: {
@@ -475,21 +477,14 @@ let chapterObj = {
 		img: "images/door.jpg",
 		options: [
 			{ text: "Révéler les empreintes sur le clavier", goto: 'goToChapter("Statue")', gadget: "Spray", },
-		],
-	},
-
-	BureauCarte: {
-		subtitle: "Le bureau",
-		text: "Vous arrivez devant la porte d'un bureau, qui, au petit écriteau sur la porte, semble appartenir au bureau du directeur du musée. C'est là que se trouve la légendaire statue. Mais comment entrer? Sur la porte, une serrure électronique vous bloque l'accès.",
-		img: "images/door.jpg",
-		options: [
-			{ text: "Utiliser la carte d'accès", goto: 'goToChapter("Statue")', gadget: "Lockpick",},
+			{ text: "Utiliser la carte d'accès", goto: 'goToChapter("Statue")', gadget: "Keycard", },
+			{ text: "Essayer des codes au hasard", goto: 'goToChapter("BureauMort")',}
 		],
 	},
 
 	BureauMort: {
 		subtitle: "Whaaaat!?",
-		text: "Vous arrivez devant la porte d'un bureau, qui, au petit écriteau sur la porte, semble appartenir au bureau du directeur du musée. C'est là que se trouve la légendaire statue. Mais comment entrer? Sur la porte, une serrure électronique vous bloque l'accès. Vous tentez de forcer la serrure mais en vain. Un bruit sourd derrière vous se fait entendre. Puis, plus rien. Puis tout d'un coup le mur explose et laisse passer... l'énorme squelette de dinausore qui semble furieux. Celui-ci vous réduit en boullie en l'espace de quelque secondes. Si près du but!",
+		text: "Vous arrivez devant la porte d'un bureau, qui, au petit écriteau sur la porte, semble appartenir au bureau du directeur du musée. C'est là que se trouve la légendaire statue. Mais comment entrer? Sur la porte, une serrure électronique vous bloque l'accès. Vous tentez de forcer la serrure mais en vain. Un bruit sourd derrière vous se fait entendre. Puis, plus rien. Puis tout d'un coup le mur explose et laisse passer... l'énorme squelette de dinosaure qui semble furieux. Celui-ci vous réduit en boullie en l'espace de quelque secondes. Si près du but!",
 		img: "images/dino.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -504,7 +499,7 @@ let chapterObj = {
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
 		],
-		win: "Statue",
+		art: "statue",
 	},
 
 	Win: {
@@ -514,7 +509,7 @@ let chapterObj = {
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
 		],
-		win: "",
+		art: "",
 	},
 
 	WinEnd: {
@@ -524,7 +519,7 @@ let chapterObj = {
 		options: [
 			{ text: "Découvrir ce qu'il vous manque !", goto: "rickroll()" },
 		],
-		win: "",
+		art: "",
 	},
 };
 
@@ -566,9 +561,10 @@ window.addEventListener("load", () => {
 		endList = JSON.parse(localStorage.getItem("endList"));
 		console.log("endList loaded : " + endList);
 		endopen.textContent = endList.length + " / 24 fins débloquées";
-		for (i = 0; i <= endList.length; i++) {
+		for (i = 0; i < endList.length; i++) {
 			endItem = document.querySelector(".end" + endList[i]);
 			endItem.classList.add("unlocked");
+			console.log(".end" + endList[i])
 		}
 	}
 
@@ -576,7 +572,7 @@ window.addEventListener("load", () => {
 		artList = JSON.parse(localStorage.getItem("artList"));
 		console.log("artList loaded : " + artList);
 		artopen.textContent = artList.length + " / 3 artéfacts";
-		for (i = 0; i <= artList.length; i++) {
+		for (i = 0; i < artList.length; i++) {
 			artItem = document.querySelector("." + artList[i]);
 			artItem.classList.add("unlocked");
 		}
@@ -679,10 +675,12 @@ window.addEventListener("load", () => {
 		hasLockpick = false;
 		hasBomb = false;
 		hasSpray = false;
+		wallExploded = false;
 		localStorage.setItem("hasRope", hasRope);
 		localStorage.setItem("hasLockpick", hasLockpick);
 		localStorage.setItem("hasBomb", hasBomb);
 		localStorage.setItem("hasSpray", hasSpray);
+		localStorage.setItem("wallExploded", wallExploded);
 		goToChapter(chapitre);
 	}
 
@@ -691,11 +689,12 @@ window.addEventListener("load", () => {
 		hasLockpick = true;
 		hasBomb = false;
 		hasSpray = false;
+		wallExploded = false;
 		localStorage.setItem("hasRope", hasRope);
 		localStorage.setItem("hasLockpick", hasLockpick);
 		localStorage.setItem("hasBomb", hasBomb);
 		localStorage.setItem("hasSpray", hasSpray);
-		localStorage.setItem("hasLockpick", hasLockpick);
+		localStorage.setItem("wallExploded", wallExploded);
 		goToChapter(chapitre);
 		
 	}
@@ -705,11 +704,12 @@ window.addEventListener("load", () => {
 		hasLockpick = false;
 		hasBomb = true;
 		hasSpray = false;
+		wallExploded = false;
 		localStorage.setItem("hasRope", hasRope);
 		localStorage.setItem("hasLockpick", hasLockpick);
 		localStorage.setItem("hasBomb", hasBomb);
 		localStorage.setItem("hasSpray", hasSpray);
-		localStorage.setItem("hasBomb", hasBomb);
+		localStorage.setItem("wallExploded", wallExploded);
 		goToChapter(chapitre);
 	}
 
@@ -718,21 +718,35 @@ window.addEventListener("load", () => {
 		hasLockpick = false;
 		hasBomb = false;
 		hasSpray = true;
+		wallExploded = false;
 		localStorage.setItem("hasRope", hasRope);
 		localStorage.setItem("hasLockpick", hasLockpick);
 		localStorage.setItem("hasBomb", hasBomb);
 		localStorage.setItem("hasSpray", hasSpray);
-		localStorage.setItem("hasSpray", hasSpray);
+		localStorage.setItem("wallExploded", wallExploded);
 		goToChapter(chapitre);
 	}
 
-/*function checkRope(chapitreOui, chapitreNon){
-	if(hasRope == true) {
-		goToChapter(chapitreOui);
-	} else {
-		goToChapter(chapitreNon);
+	function explodeWall(chapitre){
+		wallExploded = true;
+		localStorage.setItem("wallExploded", wallExploded);
+		goToChapter(chapitre);
 	}
-}*/
+
+	function getKeycard(chapitre) {
+		hasKeycard = true;
+		localStorage.setItem("hasKeycard", hasKeycard);
+		goToChapter(chapitre);
+	}
+
+	function checkLasers() {
+		wallExploded = localStorage.getItem(wallExploded);
+		if (wallExploded == true) {
+			goToChapter("RayonsEau");
+		} else {
+			goToChapter("Rayons");
+		}
+	}
 
 //---MENUS---
 
