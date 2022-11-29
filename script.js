@@ -630,7 +630,7 @@ function goToChapter(chapter) {
 			endList.push(chapterObj[chapter]["end"]);
 			endListStorage = JSON.stringify(endList);
 			localStorage.setItem("endList", endListStorage);
-			endopen.textContent = endList.length + " / 24 fins débloquées";
+			endopen.textContent = endList.length + " / 21 fins débloquées";
 			endItem = document.querySelector(".end" + chapterObj[chapter]["end"]);
 			endItem.classList.add("unlocked");
 		}
@@ -644,7 +644,7 @@ function goToChapter(chapter) {
 			deathSound.play();
 		}
 		//Detect win
-		if(endList.length == 24 && activePage != "WinEnd") {
+		if(endList.length == 21 && activePage != "WinEnd") {
 			document.querySelector(".btnpanel button").setAttribute("onclick", "goToChapter('WinEnd')");
 		}
 	} else if (chapterObj[chapter]["art"]) {
