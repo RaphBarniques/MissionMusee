@@ -52,6 +52,12 @@ body {
 	margin: 40px;
 }
 
+.video {
+	height: 250px;
+	margin: 40px;
+	display: none;
+}
+
 .text {
 	color: #fafafa;
 	font-size: 20px;

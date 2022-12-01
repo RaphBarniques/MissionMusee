@@ -3,6 +3,7 @@
 const subtitle = document.querySelector(".title");
 const text = document.querySelector(".text");
 const image = document.querySelector(".image");
+const video = document.querySelector(".video");
 const btnpanel = document.querySelector(".btnpanel");
 const endmenu = document.querySelector(".end");
 const endclose = document.querySelector(".endclose");
@@ -61,7 +62,7 @@ let chapterObj = {
 	Zap: {
 		subtitle: "Zap!",
 		text: "Vous avez bien essayé de désactiver les systèmes d'alarme avec vos outils, mais une seconde d'inattention a suffi pour que votre crochet court-circuite deux fils et vous électrocute à mort. Ouch…",
-		img: "images/alarme.jpg",
+		video: "videos/zap.mp4",
 		options: [{ text: "Retour au début", goto: "goToChapter('LeCommencement')" }],
 		end: "1",
 	},
@@ -298,7 +299,7 @@ let chapterObj = {
 	Fournaise: {
 		subtitle: "Kaboom!",
 		text: "Bon… J'ai beaucoup de difficultés à m'expliquer ce qui vous a passé par la tête… Qu'est-ce que vous pensiez qui allait vraiment se passer? Donc… Le musée complet a sauté, avec vous à l'intérieur, bien évidemment! Je crois que vous devriez recommencer… En pensant avec votre tête cette fois!",
-		img: "images/***",
+		video: "videos/explosion.mp4",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("FauxDebut")' },
 		],
@@ -592,7 +593,17 @@ function goToChapter(chapter) {
 	//Build page
 	subtitle.innerHTML = chapterObj[chapter]["subtitle"];
 	text.innerHTML = chapterObj[chapter]["text"];
-	image.src = chapterObj[chapter]["img"];
+	if (chapterObj[chapter]["img"]) {
+		image.src = chapterObj[chapter]["img"];
+		video.style.display="none";
+		image.style.display="block";
+	} else if (chapterObj[chapter]["video"]) {
+		video.src = chapterObj[chapter]["video"];
+		image.style.display="none";
+		video.style.display="block";
+	} else {
+		console.log("Media not found");
+	}
 	btnpanel.innerHTML = "";
 
 	//Build button panel
