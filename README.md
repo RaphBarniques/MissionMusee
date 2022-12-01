@@ -1,5 +1,7 @@
 # Mission Musée, Mission Musée, Mission Musée
 
+## Maintenant en ligne! ##
+
 [Essayez Mission musée, Mission Musée, Mission Musée](https://raphbarniques.github.io/MissionMusee/)
 
 Projet de création d'un jeu "Vous êtes le héro" dans le cadre du cours de Développement Web 582-324MO
@@ -20,5 +22,3 @@ Projet de création d'un jeu "Vous êtes le héro" dans le cadre du cours de Dé
 ![Schema](/images/schema.drawio.png)
   
 </details>
-
-## Ce projet est en cours de construction. Revenez plus tard pour voir le résultat!! ##
