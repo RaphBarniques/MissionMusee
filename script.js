@@ -3,6 +3,7 @@
 const subtitle = document.querySelector(".title");
 const text = document.querySelector(".text");
 const image = document.querySelector(".image");
+const video = document.querySelector(".video");
 const btnpanel = document.querySelector(".btnpanel");
 const endmenu = document.querySelector(".end");
 const endclose = document.querySelector(".endclose");
@@ -61,8 +62,8 @@ let chapterObj = {
 	Zap: {
 		subtitle: "Zap!",
 		text: "Vous avez bien essayé de désactiver les systèmes d'alarme avec vos outils, mais une seconde d'inattention a suffi pour que votre crochet court-circuite deux fils et vous électrocute à mort. Ouch…",
-		img: "images/alarme.jpg",
-		options: [{ text: "Retour au début", goto: "LeCommencement" }],
+		video: "videos/zap.mp4",
+		options: [{ text: "Retour au début", goto: "goToChapter('LeCommencement')" }],
 		end: "1",
 	},
 
@@ -298,7 +299,7 @@ let chapterObj = {
 	Fournaise: {
 		subtitle: "Kaboom!",
 		text: "Bon… J'ai beaucoup de difficultés à m'expliquer ce qui vous a passé par la tête… Qu'est-ce que vous pensiez qui allait vraiment se passer? Donc… Le musée complet a sauté, avec vous à l'intérieur, bien évidemment! Je crois que vous devriez recommencer… En pensant avec votre tête cette fois!",
-		img: "images/***",
+		video: "videos/explosion.mp4",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("FauxDebut")' },
 		],
@@ -509,7 +510,7 @@ let chapterObj = {
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
 		],
-		art: "",
+		win: "win",
 	},
 
 	WinEnd: {
@@ -519,7 +520,7 @@ let chapterObj = {
 		options: [
 			{ text: "Découvrir ce qu'il vous manque !", goto: "rickroll()" },
 		],
-		art: "",
+		win: "winend",
 	},
 };
 
@@ -565,7 +566,7 @@ window.addEventListener("load", () => {
 	if (localStorage.getItem("endList") != null) {
 		endList = JSON.parse(localStorage.getItem("endList"));
 		console.log("endList loaded : " + endList);
-		endopen.textContent = endList.length + " / 24 fins débloquées";
+		endopen.textContent = endList.length + " / 21 fins débloquées";
 		for (i = 0; i < endList.length; i++) {
 			endItem = document.querySelector(".end" + endList[i]);
 			endItem.classList.add("unlocked");
@@ -592,7 +593,17 @@ function goToChapter(chapter) {
 	//Build page
 	subtitle.innerHTML = chapterObj[chapter]["subtitle"];
 	text.innerHTML = chapterObj[chapter]["text"];
-	image.src = chapterObj[chapter]["img"];
+	if (chapterObj[chapter]["img"]) {
+		image.src = chapterObj[chapter]["img"];
+		video.style.display="none";
+		image.style.display="block";
+	} else if (chapterObj[chapter]["video"]) {
+		video.src = chapterObj[chapter]["video"];
+		image.style.display="none";
+		video.style.display="block";
+	} else {
+		console.log("Media not found");
+	}
 	btnpanel.innerHTML = "";
 
 	//Build button panel
@@ -618,10 +629,7 @@ function goToChapter(chapter) {
 			
 			if ((eval("has" + chapterObj[chapter]["options"][i]["gadget"])) == false) {
 				button.setAttribute("class", "hide");
-				console.log("hide")
-			} else {
-				console.log("show")
-			}
+			} 
 		}
 		btnpanel.appendChild(button);
 	}
@@ -633,7 +641,7 @@ function goToChapter(chapter) {
 			endList.push(chapterObj[chapter]["end"]);
 			endListStorage = JSON.stringify(endList);
 			localStorage.setItem("endList", endListStorage);
-			endopen.textContent = endList.length + " / 24 fins débloquées";
+			endopen.textContent = endList.length + " / 21 fins débloquées";
 			endItem = document.querySelector(".end" + chapterObj[chapter]["end"]);
 			endItem.classList.add("unlocked");
 		}
@@ -645,6 +653,10 @@ function goToChapter(chapter) {
 			deathSound.volume = 0.2;
 			deathSound.currentTime = 0;
 			deathSound.play();
+		}
+		//Detect win
+		if(endList.length == 21 && activePage != "WinEnd") {
+			document.querySelector(".btnpanel button").setAttribute("onclick", "goToChapter('WinEnd')");
 		}
 	} else if (chapterObj[chapter]["art"]) {
 		//Add to list
@@ -663,7 +675,21 @@ function goToChapter(chapter) {
 			winSound.volume = 0.2;
 			winSound.currentTime = 0;
 			winSound.play();
+		} 
+		//Redirect if win
+		if (artList.length == 3) {
+			document.querySelector(".btnpanel button").setAttribute("onclick", "goToChapter('Win')")
 		}
+	} else if (chapterObj[chapter]["win"]) {
+		console.log("win")
+		//Change style
+		document.body.classList.add("win");
+		//Play sound
+		if (allowSound == true) {
+			winSound.volume = 0.2;
+			winSound.currentTime = 0;
+			winSound.play();
+		} 
 	} else {
 		//Change style
 		document.body.classList.remove("end");
@@ -762,6 +788,10 @@ function goToChapter(chapter) {
 		} else {
 			goToChapter("Rayons");
 		}
+	}
+
+	function rickroll() {
+		location.href='https://www.youtube.com/watch?v=xvFZjo5PgG0';
 	}
 
 //---MENUS---
