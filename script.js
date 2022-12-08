@@ -68,7 +68,7 @@ let chapterObj = {
 
 	Egypte: {
 		subtitle: "L'Égypte ancienne",
-		text: "Vous entrez dans l'exposition sur l'Égypte ancienne. Autour de vous se trouvent plusieurs momies, une énorme pyramide, et BEAUCOUP de sable. Au fond de la pièce se trouve une statue du sphinx. Vous apercevez également sur le mur de droite se trouve un bouton rouge qui semble hors de place.",
+		text: "Vous entrez dans l'exposition sur l'Égypte ancienne. Autour de vous se trouvent plusieurs momies, une énorme pyramide, et BEAUCOUP de sable. Au fond de la pièce se trouve une statue du sphinx. Vous apercevez également sur le mur de droite un bouton rouge qui semble hors de place.",
 		img: "images/egypte.jpg",
 		options: [
 			{ text: "Chatouiller les momies", goto: 'goToChapter("Momies")' },
@@ -90,7 +90,7 @@ let chapterObj = {
 
 	Pyramide: {
 		subtitle: "Pierre qui roule…",
-		text: "Arrivez au sommet de la pyramide, vous admirez la vue. Mais soudain, votre pied glisse et vous roulez jusqu'en bas de la pyramide. Vous arrivez en bas sans trop de dommages, mais il semblerait que vos cris aient affaibli la structure et un éboulis des pierres de la pyramide vous tombe dessus.",
+		text: "Arrivé au sommet de la pyramide, vous admirez la vue. Mais soudain, votre pied glisse et vous roulez jusqu'en bas de la pyramide. Vous arrivez en bas sans trop de dommages, mais il semblerait que vos cris aient affaibli la structure et un éboulis des pierres de la pyramide vous tombe dessus.",
 		img: "images/eboulis.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -100,7 +100,7 @@ let chapterObj = {
 
 	Momies: {
 		subtitle: "Guili Guili!",
-		text: "Vous vous approchez des momies et, vous trouvant vraiment drôle, vous mettez à les chatouiller. De toute façon, elles sont mortes depuis très longtemps, elles ne peuvent rien faire. Ou en tout cas, c'est ce que vous pensiez! La dernière momie se réveille et vous pourchasse partout dans le musée. Vous n'avez pas d'autres choix que de vous enfuir du musée.",
+		text: "Vous vous approchez des momies et, vous trouvant vraiment drôle, vous vous mettez à les chatouiller. De toute façon, elles sont mortes depuis très longtemps, elles ne peuvent rien faire. Ou en tout cas, c'est ce que vous pensiez! La dernière momie se réveille et vous pourchasse partout dans le musée. Vous n'avez pas d'autres choix que de vous enfuir du musée.",
 		img: "images/momie.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -132,7 +132,7 @@ let chapterObj = {
 
 	MoyenAge: {
 		subtitle: "Le Moyen-Âge",
-		text: "Vous arrivez dans la salle d'exposition sur le Moyen-Âge. C'est franchement impressionnant. Autour de vous vous pouvez voir des armures, un dragon et une statue d'un roi et même la tombe d'un chevalier.",
+		text: "Le sphinx vous guide vers la salle d'exposition sur le Moyen-Âge. C'est franchement impressionnant. Autour de vous vous pouvez voir des armures, un dragon et une statue d'un roi et même la tombe d'un chevalier.",
 		img: "images/moyenage.jpg",
 		options: [
 			{ text: "Courir vers la porte de l'autre côté de la salle", goto: 'goToChapter("Brochette")', },
@@ -173,7 +173,7 @@ let chapterObj = {
 	},
 
 	Dragon: {
-		subtitle: "Piquenique avec le dragon",
+		subtitle: "Pique-nique avec le dragon",
 		text: "Vous vous approchez du grand dragon et lui offrez un bout de votre sandwich. Celui-ci paraît flatté et accepte. Vous discutez donc pendant de longues heures avec l'amical dragon. Vous lui expliquez votre plan et cela semble l'amuser. Celui-ci vous offre de vous escorter jusqu'à la salle suivante.",
 		img: "images/dragon.jpg",
 		options: [{ text: "Suivre le dragon", goto: "checkLasers()" }],
@@ -192,7 +192,7 @@ let chapterObj = {
 
 	RayonsSpray: {
 		subtitle: "Comme dans les films d'espion",
-		text: "Votre instinc d'agent secret vous dicte de vous méfier. Vous sortez donc votre spray et arrosez vos alentours. sous vos yeux, des centaines de rayons laser apparraissent. Vous commencez à vous tortiller entre les rayons et finissez par arriver de l'autre côté sans même accrocher en accrocher un seul.",
+		text: "Votre instinct d'agent secret vous dicte de vous méfier. Vous sortez donc votre spray et arrosez vos alentours. sous vos yeux, des centaines de rayons laser apparraissent. Vous commencez à vous tortiller entre les rayons et finissez par arriver de l'autre côté sans même accrocher en accrocher un seul.",
 		img: "images/piecelaser.png",
 		options: [
 			{ text: "Emparez-vous du tableau", goto: 'goToChapter("Tableau")' },
@@ -219,7 +219,7 @@ let chapterObj = {
 	},
 
 	Ventilation: {
-		subtitle: "Comme James Bond",
+		subtitle: "Sus",
 		text: "À l'aide de votre corde, vous vous hissez dans les canaux de ventilations. Ceux-ci sont pleins de poussière et de crottes de rats. Miam! Mais soudain, le conduit s'affaisse et vous tombez… dans le coffre-fort du musée! Quelle chance! Et voilà le diamant juste devant vous!",
 		img: "images/vent.jpg",
 		options: [
@@ -278,7 +278,7 @@ let chapterObj = {
 
 	Catapulte: {
 		subtitle: "À la une! À la deux! À la troiiiiis!",
-		text: "Grand amateur de catapulte que vous êtes, vous examinez ce magnifique artéfact. Il semble avoir été plutôt bien conservé! Vous en faites plusieurs fois le tour, résistant l'envie d'y toucher. Mais vos pieds se prennent dans un bout de corde au sol et la tension sur celle-ci active la catapulte. Seulement, vous y êtes maintenant attaché par la cheville! La force de la catapulte vous fait défoncer le plafond avant de retomber et de passer au travers du plancher des deux étages sous vous.  ",
+		text: "Grand amateur de catapulte que vous êtes, vous examinez ce magnifique artéfact. Il semble avoir été plutôt bien conservé! Vous en faites plusieurs fois le tour, résistant à l'envie d'y toucher. Mais vos pieds se prennent dans un bout de corde au sol et la tension sur celle-ci active la catapulte. Seulement, vous y êtes maintenant attaché par la cheville! La force de la catapulte vous fait défoncer le plafond avant de retomber et de passer au travers du plancher des deux étages sous vous.  ",
 		img: "images/catapulte.jpg",
 		options: [{ text: "Ouch…", goto: 'goToChapter("SousSol")' }],
 	},
@@ -329,7 +329,7 @@ let chapterObj = {
 
 	Fantome: {
 		subtitle: "Boo!",
-		text: "En posant cette question à voix autres, avez-vous réfléchi au fait que vous pouvez avoir une réponse? Eh oui, vous avez réveillé un fantôme de la place! Vous vous mettez à crier et à courir vers la sortie. Peut-être reviendrez-vous durant la journée lorsqu'il n'y aura plus de fantômes dans les parages!",
+		text: "En posant cette question à voix haute, avez-vous réfléchi au fait que vous pouvez avoir une réponse? Eh oui, vous avez réveillé un fantôme de la place! Vous vous mettez à crier et à courir vers la sortie. Peut-être reviendrez-vous durant la journée lorsqu'il n'y aura plus de fantômes dans les parages!",
 		img: "images/fantome.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -339,7 +339,7 @@ let chapterObj = {
 
 	Garda: {
 		subtitle: "Le local de la Garda",
-		text: "Vous crochetez la serrure et arrivez dans le local de la sécurité. Heureusement, celui-ci est vide. Vous jetez un œil aux caméras de sécurité, mais une carte sur le bureau attire votre attention. Il s'agit d'une carte magnétique de niveau 3. Voilà qui pourrait être utile! vous empochez la carte et montez l'escalier au fond de la pièce.",
+		text: "Vous crochetez la serrure et arrivez dans le local de la sécurité. Heureusement, celui-ci est vide. Vous jetez un œil aux caméras de sécurité, mais une carte sur le bureau attire votre attention. Il s'agit d'une carte magnétique de niveau 3. Voilà qui pourrait être utile! Vous empochez la carte et montez l'escalier au fond de la pièce.",
 		img: "images/garda.jpg",
 		options: [{ text: "On monte!", goto: 'getKeycard("Dino")' }],
 	},
@@ -356,7 +356,7 @@ let chapterObj = {
 
 	CoffreFortMort: {
 		subtitle: "J'ai faim!",
-		text: "Vous tentez de forcer la porte, mais cela enclenche un piège et toutes les issues de la salle. Ça y est, vous êtes pris au piège. Les jours passent et personne ne se rend compte de votre présence. Vous finissez par mourir de faim. Dommage, vous étiez si près! ",
+		text: "Vous tentez de forcer la porte, mais cela enclenche un piège et toutes les issues de la salle se vérouillent. Ça y est, vous êtes pris au piège. Les jours passent et personne ne se rend compte de votre présence. Vous finissez par mourir de faim. Dommage, vous étiez si près! ",
 		img: "images/pain.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -398,7 +398,7 @@ let chapterObj = {
 
 	Plantes: {
 		subtitle: "L'heure du lunch",
-		text: "Vous vous aventurez dans les herbes hautes. Vous vous interrogez à savoir ce qui peut bien se trouver de l'autre côté. Mais il semble que vous ne le saurez jamais puisque vous marchez sur une racine qui se met à vibrer sous votre pied. L'origine de cette racine, une grosse plante préhistorique se met à crier... et vous croque la tête. La prochaine fois, regardez où vous mettez les pieds!",
+		text: "Vous vous aventurez dans les herbes hautes. Vous vous interrogez à savoir ce qui peut bien se trouver de l'autre côté. Mais il semble que vous ne le saurez jamais puisque vous marchez sur une racine qui se met à vibrer sous votre pied. L'origine de cette racine, une grosse plante préhistorique, se met à crier... et vous croque la tête. La prochaine fois, regardez où vous mettez les pieds!",
 		img: "images/plante.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -408,7 +408,7 @@ let chapterObj = {
 
 	Volcan: {
 		subtitle: "C'est chaud, c'est chaud, c'est chaud!",
-		text: "Vous vous mettez à ecalader de façon enthousiaste la montagne. Cela prendra des heure mais ce que la vue en vaudra la peine! Arrivé au sommet, vous êtes essouflé et avez très chaud. Très chaud. TROP chaud! Vous baissez les yeux et appercevez un énorme lac de lave. Ce n'est pas une montagne! C'est un volcan! Dans la panique, vous vous mettez à crier. Le volcan gronde puis explose. Aïe!",
+		text: "Vous vous mettez à escalader de façon enthousiaste la montagne. Cela prendra des heures mais ce que la vue en vaudra la peine! Arrivé au sommet, vous êtes essouflé et avez très chaud. Très chaud. TROP chaud! Vous baissez les yeux et appercevez un énorme lac de lave. Ce n'est pas une montagne! C'est un volcan! Dans la panique, vous vous mettez à crier. Le volcan gronde puis explose. Aïe!",
 		img: "images/volcan.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -418,7 +418,7 @@ let chapterObj = {
 
 	Liane: {
 		subtitle: "George de la jungle",
-		text: "Pris d'une pulsion animale, vous grimpez dans un arbre et, tout en agrippant une liane, vous jetez dans le vide. Un cri tribal sort de votre bouche. Vous n'avez plus le contrôle, c'est votre instinc qui vous garde en vie, en vous balançant de liane en lianes. Mais vous arrivez rapidement à la fin de la petite jungle et avec tout votre momentum, volez jusqu'à la porte de la prochaine salle.",
+		text: "Pris d'une pulsion animale, vous grimpez dans un arbre et, tout en agrippant une liane, vous vous jetez dans le vide. Un cri tribal sort de votre bouche. Vous n'avez plus le contrôle, c'est votre instinct qui vous garde en vie, en vous balançant de liane en lianes. Vous arrivez rapidement à la fin de la petite jungle et avec tout votre momentum, volez jusqu'à la porte de la prochaine salle.",
 		img: "images/liane.jpg",
 		options: [
 			{ text: "OOOOOoooOOOoooooooo", goto: 'goToChapter("Aquarium")' },
@@ -427,7 +427,7 @@ let chapterObj = {
 
 	Aquarium: {
 		subtitle: "L'Aquarium",
-		text: "Vous arrivez tant bien que mal dans cette grande pièce remplie de grands aquariums. Des lumières bleutées bougent lentement donnant l'impression de marcher sous l'eau. Dans les murs, des centaines de poissons nagent dans tout les sens. Au centre de la pièce, un grand bassin de raie avec une inscription vous invitant à les flatter. Autour de vous se trouvent différents aquariums. L'un est rempli de poissons rouges, l'autre semble vide et le dernier contient une énorme perle. Une echelle est accotée sur la vitre de ce dernier.",
+		text: "Vous arrivez tant bien que mal dans cette grande pièce remplie de grands aquariums. Des lumières bleutées bougent lentement donnant l'impression de marcher sous l'eau. Dans les murs, des centaines de poissons nagent dans tout les sens. Au centre de la pièce, un grand bassin de raies avec une inscription vous invitant à les flatter. Autour de vous se trouvent différents aquariums. L'un est rempli de poissons rouges, l'autre semble vide et le dernier contient une énorme perle. Une échelle est accotée sur la vitre de ce dernier.",
 		img: "images/aqua.png",
 		options: [
 			{ text: "Aller voir les poissons clowns", goto: 'goToChapter("Nemo")', },
@@ -446,7 +446,7 @@ let chapterObj = {
 
 	Pirhana: {
 		subtitle: "Plouf",
-		text: "Vous montez l'échelle et vous jetez vers la grosse perle. Mais quelque chose vous retient. Vous regardez derrière vous et voyez une bande de pirhanas qui vous retiennent et se jettent sur vous. En moins de quelques secondes, vous vous faites dévorer de la tête aux pieds.",
+		text: "Vous montez l'échelle et vous vous jetez vers la grosse perle. Mais quelque chose vous retient. Vous regardez derrière vous et voyez une bande de pirhanas qui vous retiennent et se jettent sur vous. En moins de quelques secondes, vous vous faites dévorer de la tête aux pieds.",
 		img: "images/poisson.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -466,14 +466,14 @@ let chapterObj = {
 
 	Nemo: {
 		subtitle: "Trouver Némo",
-		text: "Vous vous approchez de l'aquarium rempli de poissons clowns. L'un d'entre eux s'adresse à vous. Il se prénomme Martin et cherche son fils. Confus, vous lui pointez un groupe de jeunes poissons clowns. Celui-ci verse une larme (?) et vous remercie de tout coeur de l'avoir aidé. Il vous guide jusqu'à la porte au fond de la salle tout en lui souhaitant bonne chance.",
+		text: "Vous vous approchez de l'aquarium rempli de poissons clowns. L'un d'entre eux s'adresse à vous. Il se prénomme Martin et cherche son fils. Confus, vous lui pointez un groupe de jeunes poissons clowns. Celui-ci verse une larme (?) et vous remercie de tout coeur de l'avoir aidé. Il vous guide jusqu'à la porte au fond de la salle tout en vous souhaitant bonne chance.",
 		img: "images/nemo.jpg",
 		options: [{ text: "Eh bien!", goto: 'goToChapter("Bureau")' }],
 	},
 
 	Bureau: {
 		subtitle: "Le bureau",
-		text: "Vous arrivez devant la porte d'un bureau, qui, au petit écriteau sur la porte, semble appartenir au bureau du directeur du musée. C'est là que se trouve la légendaire statue. Mais comment entrer? Sur la porte, une serrure électronique vous bloque l'accès.",
+		text: "Vous arrivez devant la porte d'un bureau, qui, selon le petit écriteau sur la porte, semble appartenir au directeur du musée. C'est là que se trouve la légendaire statue. Mais comment entrer? Sur la porte, une serrure électronique vous bloque l'accès.",
 		img: "images/door.jpg",
 		options: [
 			{ text: "Révéler les empreintes sur le clavier", goto: 'goToChapter("Statue")', gadget: "Spray", },
@@ -484,7 +484,7 @@ let chapterObj = {
 
 	BureauMort: {
 		subtitle: "Whaaaat!?",
-		text: "Vous arrivez devant la porte d'un bureau, qui, au petit écriteau sur la porte, semble appartenir au bureau du directeur du musée. C'est là que se trouve la légendaire statue. Mais comment entrer? Sur la porte, une serrure électronique vous bloque l'accès. Vous tentez de forcer la serrure mais en vain. Un bruit sourd derrière vous se fait entendre. Puis, plus rien. Puis tout d'un coup le mur explose et laisse passer... l'énorme squelette de dinosaure qui semble furieux. Celui-ci vous réduit en boullie en l'espace de quelque secondes. Si près du but!",
+		text: "Vous arrivez devant la porte d'un bureau, qui, selon le petit écriteau sur la porte, semble appartenir au directeur du musée. C'est là que se trouve la légendaire statue. Mais comment entrer? Sur la porte, une serrure électronique vous bloque l'accès. Vous tentez de forcer la serrure mais en vain. Un bruit sourd derrière vous se fait entendre. Puis, plus rien. Puis tout d'un coup le mur explose et laisse passer... l'énorme squelette de dinosaure qui semble furieux. Celui-ci vous réduit en boullie en l'espace de quelque secondes. Si près du but!",
 		img: "images/dino.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
@@ -504,7 +504,7 @@ let chapterObj = {
 
 	Win: {
 		subtitle: "Victoire !",
-		text: "Wow… Il semble que vous ayez rammassé tout les objets… Félicitations! Mais avez-vous débloqué toute les fins? Il vous reste encore à faire! Vous pouvez regarder quelles fin vous avez débloquées en cliquant sur le compteur au bas de la page. Bonne chasse!",
+		text: "Wow… Il semble que vous ayez rammassé tous les objets… Félicitations! Mais avez-vous débloqué toutes les fins? Il vous reste encore à faire! Vous pouvez regarder quelles fins vous avez débloquées en cliquant sur le compteur au bas de la page. Bonne chasse!",
 		img: "images/victoire.jpg",
 		options: [
 			{ text: "Retour au début", goto: 'goToChapter("LeCommencement")' },
